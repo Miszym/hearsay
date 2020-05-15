@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Navbar from '../Navbar';
+import { Link } from 'react-router-dom';
 
 const StyledHeader = styled.header`
+   position: relative;
    background: radial-gradient(
       circle,
       rgba(85, 122, 148, 1) 1%,
@@ -9,19 +13,36 @@ const StyledHeader = styled.header`
    );
    height: 10rem;
    width: 100%;
-   font-size: 4rem;
-   font-family: 'Montserrat Alternates', sans-serif;
-   color: ${(props) => props.theme.colorMain};
-   text-align: center;
+   font-size: 2rem;
+   font-family: ${(props) => props.theme.fonts.fontMain};
+   color: ${(props) => props.theme.colors.colorMain};
+   display: flex;
+   justify-content: center;
+   a {
+      color: ${(props) => props.theme.colors.colorMain};
+   }
+   h1 {
+      padding-top: 1rem;
+   }
 `;
 
-const Header = ({ text, theme }) => {
-   console.log(theme);
-   return <StyledHeader>{text}</StyledHeader>;
+const Header = ({ text }) => {
+   return (
+      <StyledHeader>
+         <Navbar />
+         <Link to="/">
+            <h1>{text}</h1>
+         </Link>
+      </StyledHeader>
+   );
 };
 
 Header.defaultProps = {
    text: 'Header',
+};
+
+Header.propTypes = {
+   text: PropTypes.string,
 };
 
 export default Header;
