@@ -1,21 +1,49 @@
 import React, { useState, useEffect, use } from 'react';
 import { getHeadlines } from '../../../utils/apiFunctions';
 import Main from '../../pages/Main';
+import Error from '../../pages/Error';
+import Button from '../../common/Button';
 import { useSelector } from 'react-redux';
 
 const MainContainer = () => {
    const [articles, setArticles] = useState([]);
+   const [page, setPage] = useState(1);
+   const [totalResults, setTotalResults] = useState(0);
    const vendors = useSelector((state) => state);
 
    useEffect(() => {
-      async function fetchData() {
-         const data = await getHeadlines({ sources: vendors });
-         setArticles(data);
-      }
-      fetchData();
+      fetchArticles(page);
    }, []);
 
-   return <Main articles={articles}></Main>;
+   const fetchArticles = async (page) => {
+      try {
+         const data = await getHeadlines({
+            sources: vendors,
+            page,
+         });
+         setArticles((oldArticles) => [...oldArticles].concat(data.articles));
+         setTotalResults(data.totalResults);
+      } catch (error) {
+         console.error(error);
+         setArticles(false);
+      }
+   };
+
+   const handleNextPage = () => {
+      fetchArticles(page + 1);
+      setPage((oldPage) => oldPage + 1);
+   };
+
+   return articles ? (
+      <>
+         <Main articles={articles}></Main>
+         {totalResults > articles.length && (
+            <Button onClick={handleNextPage}>more news...</Button>
+         )}
+      </>
+   ) : (
+      <Error></Error>
+   );
 };
 
 export default MainContainer;

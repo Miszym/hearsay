@@ -11,6 +11,7 @@ const StyledHeader = styled.header`
       rgba(85, 122, 148, 1) 1%,
       rgba(45, 81, 122, 1) 92%
    );
+   box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.4);
    height: 10rem;
    width: 100%;
    font-size: 2rem;

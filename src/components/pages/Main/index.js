@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes, { string } from 'prop-types';
 import styled from 'styled-components';
+import ArticleBox from '../../common/ArticleBox';
 
 const StyledMain = styled.section`
-   background-color: blue;
-   height: 100px;
+   display: flex;
+   flex-direction: column;
+   margin-top: 2rem;
+   min-height: 10rem;
 `;
 
 const Main = ({ articles }) => {
-   console.log(articles);
-   return <StyledMain></StyledMain>;
+   const articleList = articles.map((article) => (
+      <ArticleBox key={article.url} article={article}></ArticleBox>
+   ));
+   return <StyledMain>{articleList}</StyledMain>;
 };
 
 Main.propTypes = {
