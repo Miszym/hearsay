@@ -41,7 +41,7 @@ const ArticleContent = ({ article }) => {
          <p>
             {article.description
                ? article.description
-               : article.content.split('[+')[0]}
+               : article.content && article.content.split('[+')[0]}
          </p>
       </StyledContent>
    );

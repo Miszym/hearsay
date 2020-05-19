@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/layout/Header';
 import MainContainer from './components/containers/MainContainer';
-import Vendors from './components/pages/Vendors';
+import SourcesContainer from './components/containers/SourcesContainer';
 import './styles/style.scss';
 import theme from './theme';
 import { ThemeProvider } from 'styled-components';
@@ -19,8 +19,8 @@ const App = () => {
                   <Route exact path="/">
                      <MainContainer />
                   </Route>
-                  <Route path="/vendors">
-                     <Vendors />
+                  <Route path="/sources">
+                     <SourcesContainer />
                   </Route>
                </Switch>
             </Router>

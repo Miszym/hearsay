@@ -17,8 +17,8 @@ const StyledButton = styled.div`
       opacity: 0.8;
    }
 `;
-const Button = ({ children, onClick }) => {
+const ButtonText = ({ children, onClick }) => {
    return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
-export default Button;
+export default ButtonText;

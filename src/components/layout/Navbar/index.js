@@ -33,7 +33,7 @@ const Navbar = () => {
                <Link to="/">home</Link>
             </StyledLi>
             <StyledLi>
-               <Link to="/vendors">vendors</Link>
+               <Link to="/sources">sources</Link>
             </StyledLi>
          </StyledUl>
       </StyledNavbar>

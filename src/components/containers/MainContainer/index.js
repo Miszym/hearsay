@@ -1,15 +1,15 @@
-import React, { useState, useEffect, use } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getHeadlines } from '../../../utils/apiFunctions';
 import Main from '../../pages/Main';
 import Error from '../../pages/Error';
-import Button from '../../common/Button';
+import ButtonText from '../../common/ButtonText';
 import { useSelector } from 'react-redux';
 
 const MainContainer = () => {
    const [articles, setArticles] = useState([]);
    const [page, setPage] = useState(1);
    const [totalResults, setTotalResults] = useState(0);
-   const vendors = useSelector((state) => state);
+   const userSources = useSelector((state) => state);
 
    useEffect(() => {
       fetchArticles(page);
@@ -18,7 +18,7 @@ const MainContainer = () => {
    const fetchArticles = async (page) => {
       try {
          const data = await getHeadlines({
-            sources: vendors,
+            sources: userSources,
             page,
          });
          setArticles((oldArticles) => [...oldArticles].concat(data.articles));
@@ -38,7 +38,7 @@ const MainContainer = () => {
       <>
          <Main articles={articles}></Main>
          {totalResults > articles.length && (
-            <Button onClick={handleNextPage}>more news...</Button>
+            <ButtonText onClick={handleNextPage}>more news...</ButtonText>
          )}
       </>
    ) : (
