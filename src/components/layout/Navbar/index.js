@@ -30,7 +30,7 @@ const Navbar = () => {
       <StyledNavbar>
          <StyledUl>
             <StyledLi>
-               <Link to="/">home</Link>
+               <Link to="/">news</Link>
             </StyledLi>
             <StyledLi>
                <Link to="/sources">sources</Link>

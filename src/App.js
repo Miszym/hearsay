@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 import MainContainer from './components/containers/MainContainer';
 import SourcesContainer from './components/containers/SourcesContainer';
 import './styles/style.scss';
@@ -23,6 +24,7 @@ const App = () => {
                      <SourcesContainer />
                   </Route>
                </Switch>
+               <Footer />
             </Router>
          </ThemeProvider>
       </Provider>

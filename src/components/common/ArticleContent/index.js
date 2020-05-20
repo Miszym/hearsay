@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { getTimestampFromUTF } from '../../../utils/timeFunctions';
+import PropTypes from 'prop-types';
 
 const StyledContent = styled.div`
    margin: 0 1rem;
@@ -45,6 +46,22 @@ const ArticleContent = ({ article }) => {
          </p>
       </StyledContent>
    );
+};
+
+ArticleContent.propTypes = {
+   article: PropTypes.shape({
+      author: PropTypes.string,
+      title: PropTypes.string,
+      description: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+      content: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+      url: PropTypes.string,
+      urlToImage: PropTypes.string,
+      publishedAt: PropTypes.string,
+   }),
+};
+
+ArticleContent.defaultProps = {
+   article: {},
 };
 
 export default ArticleContent;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledBox = styled.article`
    display: flex;
@@ -9,9 +10,20 @@ const StyledBox = styled.article`
    min-height: 9rem;
    margin: 1rem 0.5rem 0 0.5rem;
    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
-   padding: 1rem;
+   padding: 1rem 1rem 3rem 1rem;
    font-family: ${(props) => props.theme.fonts.fontText};
    cursor: pointer;
+   &.checked {
+      background-color: #bce0b4;
+      :after {
+         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+         opacity: 0;
+         transition: opacity 0.3s ease-in-out;
+      }
+   }
+   span {
+      word-break: break-all;
+   }
    h2,
    p {
       width: 9.5rem;
@@ -33,14 +45,17 @@ const StyledCheck = styled.div`
    bottom: 0.5rem;
    right: 0.5rem;
    font-size: 2rem;
-   .checked {
+   &.checked {
       color: green;
    }
 `;
 
 const SourceBox = ({ source, checked, toggleCheck }) => {
    return (
-      <StyledBox onClick={() => toggleCheck(source.id, checked)}>
+      <StyledBox
+         onClick={() => toggleCheck(source.id, checked)}
+         className={checked ? 'checked' : ''}
+      >
          <a
             href={source.url}
             onClick={(e) => {
@@ -50,17 +65,24 @@ const SourceBox = ({ source, checked, toggleCheck }) => {
          >
             <h2>{source.name}</h2>
             <p>{source.description}</p>
-            {source.url}
+            <span>{source.url}</span>
          </a>
-         <StyledCheck>
-            {checked ? (
-               <span className="checked">&#10004;</span>
-            ) : (
-               <span>&#10004;</span>
-            )}
+         <StyledCheck className={checked ? 'checked' : ''}>
+            &#10004;
          </StyledCheck>
       </StyledBox>
    );
+};
+
+SourceBox.propTypes = {
+   source: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      Description: PropTypes.string,
+      url: PropTypes.string,
+   }),
+   checked: PropTypes.bool,
+   toggleCheck: PropTypes.func,
 };
 
 export default SourceBox;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledButton = styled.div`
    width: 12rem;
@@ -19,6 +20,10 @@ const StyledButton = styled.div`
 `;
 const ButtonText = ({ children, onClick }) => {
    return <StyledButton onClick={onClick}>{children}</StyledButton>;
+};
+
+ButtonText.propTypes = {
+   onClick: PropTypes.func,
 };
 
 export default ButtonText;

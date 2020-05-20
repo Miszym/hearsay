@@ -4,11 +4,13 @@ import Main from '../../pages/Main';
 import Error from '../../pages/Error';
 import ButtonText from '../../common/ButtonText';
 import { useSelector } from 'react-redux';
+import LoadingIndicator from '../../common/LoadingIndicator';
 
 const MainContainer = () => {
    const [articles, setArticles] = useState([]);
    const [page, setPage] = useState(1);
    const [totalResults, setTotalResults] = useState(0);
+   const [isLoading, setIsLoading] = useState(false);
    const userSources = useSelector((state) => state);
 
    useEffect(() => {
@@ -16,6 +18,7 @@ const MainContainer = () => {
    }, []);
 
    const fetchArticles = async (page) => {
+      setIsLoading(true);
       try {
          const data = await getHeadlines({
             sources: userSources,
@@ -26,6 +29,8 @@ const MainContainer = () => {
       } catch (error) {
          console.error(error);
          setArticles(false);
+      } finally {
+         setIsLoading(false);
       }
    };
 
@@ -37,6 +42,7 @@ const MainContainer = () => {
    return articles ? (
       <>
          <Main articles={articles}></Main>
+         {isLoading && <LoadingIndicator></LoadingIndicator>}
          {totalResults > articles.length && (
             <ButtonText onClick={handleNextPage}>more news...</ButtonText>
          )}

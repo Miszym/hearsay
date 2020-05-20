@@ -1,3 +1,5 @@
+import { getSourcesFromStorage, saveSources } from '../utils/dataFunctions';
+
 export function addSource(source) {
    return {
       type: 'ADD_SOURCE',
@@ -12,14 +14,21 @@ export function removeSource(source) {
    };
 }
 
-export function sourcesReducer(sources = ['abc-news'], action) {
+export function sourcesReducer(sources = getSourcesFromStorage(), action) {
    switch (action.type) {
-      case 'ADD_SOURCE':
+      case 'ADD_SOURCE': {
          const updatedSources = [...sources];
          updatedSources.push(action.payload);
+         saveSources(updatedSources);
          return updatedSources;
-      case 'REMOVE_SOURCE':
-         return sources.filter((source) => source != action.payload);
+      }
+      case 'REMOVE_SOURCE': {
+         const updatedSources = sources.filter(
+            (source) => source != action.payload
+         );
+         saveSources(updatedSources);
+         return updatedSources;
+      }
       default:
          return sources;
    }

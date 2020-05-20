@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as newsImg from '../../../img/newspapers.jpg';
 import ArticleContent from '../ArticleContent';
+import PropTypes from 'prop-types';
 
 const StyledBox = styled.article`
    width: 100%;
@@ -47,6 +48,22 @@ const ArticleBox = ({ article }) => {
          </a>
       </StyledBox>
    );
+};
+
+ArticleBox.propTypes = {
+   article: PropTypes.shape({
+      author: PropTypes.string,
+      title: PropTypes.string,
+      description: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+      content: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+      url: PropTypes.string,
+      urlToImage: PropTypes.string,
+      publishedAt: PropTypes.string,
+   }),
+};
+
+ArticleBox.defaultProps = {
+   article: {},
 };
 
 export default ArticleBox;
