@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const StyledNavbar = styled.nav`
-   margin: 0.2rem 1rem;
    position: absolute;
-   right: 0;
+   right: 3rem;
+   bottom: 1rem;
 `;
 
 const StyledUl = styled.ul`
@@ -29,9 +29,9 @@ const Navbar = () => {
    return (
       <StyledNavbar>
          <StyledUl>
-            <StyledLi>
+            {/* <StyledLi>
                <Link to="/">news</Link>
-            </StyledLi>
+            </StyledLi> */}
             <StyledLi>
                <Link to="/sources">sources</Link>
             </StyledLi>

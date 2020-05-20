@@ -8,7 +8,7 @@ const StyledBox = styled.article`
    position: relative;
    width: 11.5rem;
    min-height: 9rem;
-   margin: 1rem 0.5rem 0 0.5rem;
+   margin: 0 0.5rem 1rem 0.5rem;
    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
    padding: 1rem 1rem 3rem 1rem;
    font-family: ${(props) => props.theme.fonts.fontText};

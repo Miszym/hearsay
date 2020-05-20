@@ -11,11 +11,7 @@ const StyledBox = styled.article`
    padding: 1rem;
    margin-bottom: 2rem;
    cursor: pointer;
-   img {
-      height: 18rem;
-      width: 18rem;
-      object-fit: cover;
-   }
+
    a {
       width: 100%;
       display: flex;
@@ -25,6 +21,21 @@ const StyledBox = styled.article`
    }
    @media (max-width: 768px) {
       min-height: 12rem;
+   }
+`;
+
+const ImageBox = styled.div`
+   height: 18rem;
+   width: 18rem;
+   img {
+      height: 18rem;
+      width: 18rem;
+      object-fit: cover;
+   }
+
+   @media (max-width: 768px) {
+      height: 10rem;
+      width: 10rem;
       img {
          height: 10rem;
          width: 10rem;
@@ -37,13 +48,15 @@ const ArticleBox = ({ article }) => {
       <StyledBox>
          {' '}
          <a href={article.url} target="_blank">
-            <img
-               src={
-                  article.urlToImage && article.urlToImage !== 'null'
-                     ? article.urlToImage
-                     : newsImg.default
-               }
-            ></img>
+            <ImageBox>
+               <img
+                  src={
+                     article.urlToImage && article.urlToImage !== 'null'
+                        ? article.urlToImage
+                        : newsImg.default
+                  }
+               ></img>
+            </ImageBox>
             <ArticleContent article={article}></ArticleContent>
          </a>
       </StyledBox>

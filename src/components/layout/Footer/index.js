@@ -9,7 +9,7 @@ const StyledFooter = styled.footer`
       rgba(45, 81, 122, 1) 92%
    );
    box-shadow: 0px -10px 20px 0px rgba(0, 0, 0, 0.4);
-   height: 10rem;
+   height: 5rem;
    width: 100%;
    display: flex;
    justify-content: center;
@@ -22,8 +22,8 @@ const StyledFooter = styled.footer`
    }
    h4 {
       position: absolute;
-      bottom: 1rem;
-      left: 1rem;
+      bottom: 1.5rem;
+      right: 1rem;
       font-size: 1rem;
       font-family: ${(props) => props.theme.fonts.fontText};
       color: ${(props) => props.theme.colors.colorMain};
