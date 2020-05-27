@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import * as newsImg from '../../../img/newspapers.jpg';
+import ImageBox from '../ImageBox';
 import ArticleContent from '../ArticleContent';
 import PropTypes from 'prop-types';
 
@@ -24,39 +24,11 @@ const StyledBox = styled.article`
    }
 `;
 
-const ImageBox = styled.div`
-   height: 18rem;
-   width: 18rem;
-   img {
-      height: 18rem;
-      width: 18rem;
-      object-fit: cover;
-   }
-
-   @media (max-width: 768px) {
-      height: 10rem;
-      width: 10rem;
-      img {
-         height: 10rem;
-         width: 10rem;
-      }
-   }
-`;
-
 const ArticleBox = ({ article }) => {
    return (
       <StyledBox>
-         {' '}
-         <a href={article.url} target="_blank">
-            <ImageBox>
-               <img
-                  src={
-                     article.urlToImage && article.urlToImage !== 'null'
-                        ? article.urlToImage
-                        : newsImg.default
-                  }
-               ></img>
-            </ImageBox>
+         <a data-testid="articleLink" href={article.url} target="_blank">
+            <ImageBox url={article.urlToImage} />
             <ArticleContent article={article}></ArticleContent>
          </a>
       </StyledBox>

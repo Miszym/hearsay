@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
 const LoadingIndicator = () => {
    return (
       <StyledDiv>
-         <img src={loading.default}></img>
+         <img alt="loading..." src={loading.default}></img>
       </StyledDiv>
    );
 };

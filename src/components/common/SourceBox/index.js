@@ -55,6 +55,7 @@ const SourceBox = ({ source, checked, toggleCheck }) => {
       <StyledBox
          onClick={() => toggleCheck(source.id, checked)}
          className={checked ? 'checked' : ''}
+         data-testid="sourcebox"
       >
          <a
             href={source.url}
@@ -67,7 +68,10 @@ const SourceBox = ({ source, checked, toggleCheck }) => {
             <p>{source.description}</p>
             <span>{source.url}</span>
          </a>
-         <StyledCheck className={checked ? 'checked' : ''}>
+         <StyledCheck
+            className={checked ? 'checked' : ''}
+            data-testid="sourceCheckbox"
+         >
             &#10004;
          </StyledCheck>
       </StyledBox>
@@ -83,6 +87,10 @@ SourceBox.propTypes = {
    }),
    checked: PropTypes.bool,
    toggleCheck: PropTypes.func,
+};
+
+SourceBox.defaultProps = {
+   source: {},
 };
 
 export default SourceBox;

@@ -35,6 +35,7 @@ const Sources = ({ sources }) => {
             ></SourceBox>
          )
    );
+
    return <StyledSources>{SourcesList}</StyledSources>;
 };
 

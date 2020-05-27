@@ -19,7 +19,11 @@ const StyledButton = styled.div`
    }
 `;
 const ButtonText = ({ children, onClick }) => {
-   return <StyledButton onClick={onClick}>{children}</StyledButton>;
+   return (
+      <StyledButton data-testid="buttonText" onClick={onClick}>
+         {children}
+      </StyledButton>
+   );
 };
 
 ButtonText.propTypes = {

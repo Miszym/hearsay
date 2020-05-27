@@ -29,9 +29,6 @@ const Navbar = () => {
    return (
       <StyledNavbar>
          <StyledUl>
-            {/* <StyledLi>
-               <Link to="/">news</Link>
-            </StyledLi> */}
             <StyledLi>
                <Link to="/sources">sources</Link>
             </StyledLi>

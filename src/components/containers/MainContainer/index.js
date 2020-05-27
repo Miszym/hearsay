@@ -36,7 +36,7 @@ const MainContainer = () => {
 
    const handleNextPage = () => {
       fetchArticles(page + 1);
-      setPage((oldPage) => oldPage + 1);
+      setPage((currentPage) => currentPage + 1);
    };
 
    return articles ? (
